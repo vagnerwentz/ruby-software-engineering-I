@@ -2,14 +2,21 @@
 
 <p><%= @article.body %></p>
 
-<ul>
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
-  <li>
-    <%= 
-      link_to "Destroy", 
-      article_path(@article), 
-      method: :delete,
-      data: { confirm: "Are you sure?" }
-    %>
-  </li>
-</ul>
+<h2>Comments</h2>
+<%# Will call the _comment.html.erb %>
+<%= render @article.comments %>
+
+<h2>Add a comment</h2>
+<%# Will call the _form.html.erb %>
+<%= render 'comments/form' %> 
+
+<div>
+  <%= link_to "Edit", edit_article_path(@article) %>
+  <span>|</span>
+  <%= 
+    link_to "Destroy", 
+    article_path(@article), 
+    method: :delete,
+    data: { confirm: "Are you sure?" }
+  %>
+</div>
