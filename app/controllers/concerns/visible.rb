@@ -13,6 +13,12 @@ module Visible
     end
   end
 
+  class_methods do
+    def comment_count (article)
+      article.comments.count
+    end
+  end
+
   def archived?
     status == 'archived'
   end
