@@ -1,26 +1,33 @@
 <%= form_with model: article do |form| %>
   <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-    <% article.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
+    <%= form.label 'Título', class:"block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :title, class:"py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" %>
+    <% article.errors.full_messages_for(:title).each do %>
+      <div>
+        <p class="mt-2 text-sm text-red-600">O título não pode ser em branco.
+        </p>
+      </div>
     <% end %>
   </div>
-
+  <br>
   <div>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %><br>
+    <%= form.label 'Fale sobre o seu artigo', class:"block text-sm font-medium text-gray-700" %>
+    <div class="mt-1">
+      <%= form.text_area :body, rows:"4", class:"py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" %><br>
+    </div>
+
     <% article.errors.full_messages_for(:body).each do |message| %>
-      <div><%= message %></div>
+      <p class="text-sm text-red-600"><%= message %>.</p>
     <% end %>
   </div>
 
   <div>
-    <%= form.label :status %><br>
-    <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+    <div>
+      <%= form.label :status, class:"block text-sm font-medium text-gray-700" %>
+      <%= form.select :status,  [['Público', 'public'], ['Privado', 'private'], ['Arquivado', 'archived']], {}, {class: "mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"} %>
+    </div>
+
   </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
+  <%= form.submit 'Criar artigo', class:"mt-44 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"%>
 <% end %>

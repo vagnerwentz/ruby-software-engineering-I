@@ -1,19 +1,25 @@
 <%= form_with model: [ @article, @article.comments.build ] do |form| %>
-  <p>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
-  </p>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
+  <div>
+    <%= form.label :commenter, 'Quem comentou?', class:"block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :commenter, class:"py-3 px-4 block w-full shadow-sm bg-gray-200 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" %>
+  </div>
+  <br>
+  <div>
+    <%= form.label 'Descrição do comentário', class:"block text-sm font-medium text-gray-700" %>
+    <div class="mt-1">
+      <%= form.text_area :body, rows:"4", class:"py-3 px-4 block w-full shadow-sm bg-gray-200 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" %><br>
+    </div>
 
-  <p>
-    <%= form.label :status %><br>
-    <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
-  </p>
 
-  <p>
-    <%= form.submit %>
-  </p>
+  </div>
+
+  <div>
+    <div>
+      <%= form.label :status, class:"block text-sm font-medium text-gray-700" %>
+      <%= form.select :status,  [['Público', 'public'], ['Privado', 'private'], ['Arquivado', 'archived']], {}, {class: "mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"} %>
+    </div>
+
+  </div>
+
+  <%= form.submit 'Criar comentário', class:"mt-44 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"%>
 <% end %>
