@@ -32,7 +32,7 @@
       <h1>
         <span class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"><%= @article.title %></span>
       </h1>
-      <p class="mt-8 text-xl text-gray-500 leading-8"><%= @article.body %></p>
+      <p class="text-justify mt-8 text-xl text-gray-500 leading-8"><%= @article.body %></p>
       <h2>Comentários</h2>
       <%# Will call the _comment.html.erb %>
       <%= render @article.comments %>
